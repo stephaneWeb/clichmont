@@ -259,6 +259,11 @@ const initLocationsPreviewReveal = () => {
     });
 
     observer.observe(section);
+
+    if (window.matchMedia('(max-width: 991.98px)').matches || section.getBoundingClientRect().top < window.innerHeight * 0.92) {
+        revealPhotos();
+        observer.disconnect();
+    }
 };
 
 const initInfrastructureReveal = () => {

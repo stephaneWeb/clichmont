@@ -1625,7 +1625,8 @@ a {
     .platform-showcase,
     .platform-activity__panel,
     .platform-activity__copy,
-    .platform-activity-card {
+    .platform-activity-card,
+    .location-card[data-location-photo] {
         opacity: 1 !important;
         transform: none !important;
     }
