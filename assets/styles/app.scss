@@ -288,6 +288,19 @@ a {
     box-shadow: 0 1rem 2.5rem rgba(93, 107, 255, 0.34);
 }
 
+.btn-disabled-soon {
+    opacity: 0.58;
+    cursor: not-allowed;
+    pointer-events: none;
+    filter: saturate(0.7);
+    box-shadow: none;
+}
+
+.btn-disabled-soon::after {
+    animation: none !important;
+    opacity: 0 !important;
+}
+
 .btn-outline-light {
     border-color: rgba(255, 255, 255, 0.18);
     color: #fff;
@@ -1474,6 +1487,12 @@ a {
 
 .footer-links a:hover {
     color: #fff;
+}
+
+.footer-link-disabled {
+    color: rgba(232, 235, 255, 0.46);
+    cursor: not-allowed;
+    user-select: none;
 }
 
 .footer-address {
