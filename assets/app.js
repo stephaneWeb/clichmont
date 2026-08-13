@@ -1,7 +1,5 @@
 import './styles/app.scss';
 
-const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-
 const addMediaQueryChangeListener = (mediaQuery, handler) => {
     if (typeof mediaQuery.addEventListener === 'function') {
         mediaQuery.addEventListener('change', handler);
@@ -123,152 +121,6 @@ const createScrollLocker = () => {
             window.scrollTo(0, lockedScrollY);
         }
     };
-};
-
-const initHeroSequence = () => {
-    const root = document.querySelector('[data-hero-sequence]');
-
-    if (!root) {
-        return;
-    }
-
-    const slices = [...root.querySelectorAll('[data-hero-slice]')];
-    const staticLogo = root.querySelector('.hero-symbol-static');
-    const leftWord = root.querySelector('[data-hero-word="left"]');
-    const rightWord = root.querySelector('[data-hero-word="right"]');
-    const bottomCopy = root.querySelector('[data-hero-bottom]');
-    const sliceSpreadScale = 0.5;
-
-    const easeInOutCubic = (value) => {
-        if (value < 0.5) {
-            return 4 * value * value * value;
-        }
-
-        return 1 - Math.pow(-2 * value + 2, 3) / 2;
-    };
-
-    const phaseProgress = (value, start, end) => clamp((value - start) / (end - start), 0, 1);
-
-    const render = (progress) => {
-        const splitPhase = easeInOutCubic(phaseProgress(progress, 0.08, 0.58));
-        const textFadePhase = easeInOutCubic(phaseProgress(progress, 0.26, 0.68));
-        const bottomPhase = easeInOutCubic(phaseProgress(progress, 0.62, 0.9));
-
-        root.style.setProperty('--hero-progress', progress.toFixed(4));
-
-        slices.forEach((slice) => {
-            const spread = Number.parseFloat(slice.dataset.spread || '0');
-            const x = spread * sliceSpreadScale * splitPhase;
-            const rotate = spread * sliceSpreadScale * splitPhase * 0.04;
-
-            slice.style.transform = `translate3d(${x}px, 0, 0) rotate(${rotate}deg)`;
-        });
-
-        if (leftWord) {
-            const x = 8 - splitPhase * 210;
-            const y = 14 - splitPhase * 62;
-            const opacity = 0.8 - textFadePhase * 0.75;
-            leftWord.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-            leftWord.style.opacity = `${clamp(opacity, 0, 0.8)}`;
-        }
-
-        if (rightWord) {
-            const x = -20 + splitPhase * 230;
-            const y = -10 + splitPhase * 78;
-            const opacity = 0.76 - textFadePhase * 0.71;
-            rightWord.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-            rightWord.style.opacity = `${clamp(opacity, 0, 0.76)}`;
-        }
-
-        if (bottomCopy) {
-            const y = 84 - bottomPhase * 84;
-            bottomCopy.style.transform = `translate3d(0, ${y}px, 0)`;
-            bottomCopy.style.opacity = `${bottomPhase}`;
-        }
-    };
-
-    if (window.matchMedia('(max-width: 991.98px)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        root.classList.add('hero-sequence--static');
-
-        slices.forEach((slice) => {
-            slice.style.transform = 'none';
-            slice.style.display = 'none';
-        });
-
-        if (leftWord) {
-            leftWord.style.transform = 'none';
-            leftWord.style.opacity = '0';
-            leftWord.style.display = 'none';
-        }
-
-        if (rightWord) {
-            rightWord.style.transform = 'none';
-            rightWord.style.opacity = '0';
-            rightWord.style.display = 'none';
-        }
-
-        if (staticLogo) {
-            staticLogo.style.display = 'block';
-        }
-
-        if (bottomCopy) {
-            bottomCopy.style.transform = 'none';
-            bottomCopy.style.opacity = '1';
-        }
-
-        root.style.setProperty('--hero-progress', '0');
-        return;
-    }
-
-    const cycleMs = 4200;
-    let startTime = null;
-
-    slices.forEach((slice) => {
-        slice.style.display = '';
-    });
-
-    if (leftWord) {
-        leftWord.style.display = '';
-    }
-
-    if (rightWord) {
-        rightWord.style.display = '';
-    }
-
-    if (staticLogo) {
-        staticLogo.style.display = 'none';
-    }
-
-    const step = (timestamp) => {
-        if (startTime === null) {
-            startTime = timestamp;
-        }
-
-        const elapsed = timestamp - startTime;
-        const loop = clamp(elapsed / cycleMs, 0, 1);
-        let progress;
-
-        if (loop < 0.035) {
-            progress = 0;
-        } else if (loop < 0.56) {
-            progress = (loop - 0.035) / 0.525 * 0.68;
-        } else if (loop < 0.74) {
-            progress = 0.68 + (loop - 0.56) / 0.18 * 0.32;
-        } else {
-            progress = 1;
-        }
-
-        render(clamp(progress, 0, 1));
-
-        if (elapsed < cycleMs) {
-            window.requestAnimationFrame(step);
-            return;
-        }
-
-        render(1);
-    };
-
-    window.requestAnimationFrame(step);
 };
 
 const initPlatformReveal = () => {
@@ -503,7 +355,6 @@ const initSectionScrollGates = () => {
 };
 
 initNavToggle();
-initHeroSequence();
 initPlatformReveal();
 initInfrastructureReveal();
 initLocationsPreviewReveal();
