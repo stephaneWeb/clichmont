@@ -73,7 +73,7 @@ final class HomeController extends AbstractController
             'siteLocations' => [
                 [
                     'label' => 'Site 1',
-                    'title' => 'Technical Center Billingstad, Norway',
+                    'title' => 'Technical Center, Billingstad, Norway',
                     'description' => 'Operational enterprise site built for premium GPU workloads, secure hosting, and immediate deployment readiness.',
                     'metrics' => ['H200', 'RTX 6000 Blackwell S'],
                     'gradient' => 'linear-gradient(135deg, rgba(44, 98, 255, 0.44), rgba(255, 163, 72, 0.34))',
@@ -99,7 +99,7 @@ final class HomeController extends AbstractController
                 ],
                 [
                     'label' => 'Site 3',
-                    'title' => 'Data Center Bodo, Norway',
+                    'title' => 'Data Center, Bodo, Norway',
                     'description' => 'Q4 2027 scale-out phase for the current Site 2 footprint, designed around large enterprise GPU density and resilient northern operations.',
                     'metrics' => ['B300', 'B200', 'H200', 'RTX 6000 Blackwell S'],
                     'gradient' => 'linear-gradient(135deg, rgba(76, 136, 255, 0.34), rgba(112, 236, 214, 0.2))',
@@ -110,7 +110,7 @@ final class HomeController extends AbstractController
                 ],
                 [
                     'label' => 'Site 4',
-                    'title' => 'Solar Compute Hub Alicante, Spain',
+                    'title' => 'Solar Compute Hub, Alicante, Spain',
                     'description' => 'Q4 2027 southern expansion extending flexible regional capacity for accelerated workloads and power-aware production operations.',
                     'metrics' => ['RTX 5090', 'RTX 4090'],
                     'gradient' => 'linear-gradient(135deg, rgba(255, 176, 51, 0.42), rgba(216, 91, 255, 0.24))',
@@ -123,7 +123,7 @@ final class HomeController extends AbstractController
             'platformActivityCards' => [
                 [
                     'icon' => 'servers',
-                    'title' => 'Compute Power Production',
+                    'title' => 'Dedicated Compute Capacity',
                     'description' => 'We own and operate cutting-edge GPU clusters delivering exceptional performance and efficiency.',
                 ],
                 [
