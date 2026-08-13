@@ -213,9 +213,9 @@ a {
     left: 50%;
     top: 50%;
     z-index: 3;
-    width: clamp(28rem, 38vw, 40rem);
+    width: clamp(24rem, 31vw, 32rem);
     aspect-ratio: 1 / 0.84;
-    transform: translate(-50%, -56%);
+    transform: translate(-50%, -62%);
 }
 
 .hero-symbol-slice {
@@ -223,16 +223,6 @@ a {
     inset: 0;
     clip-path: inset(0 calc(100% - var(--slice-end)) 0 var(--slice-start));
     will-change: transform;
-}
-
-@supports not (clip-path: inset(0 0 0 0)) {
-    .hero-symbol-slice {
-        display: none;
-    }
-
-    .hero-symbol-static {
-        display: block;
-    }
 }
 
 .hero-symbol-image {
@@ -254,6 +244,16 @@ a {
     object-position: center center;
     filter: drop-shadow(0 0 34px rgba(120, 103, 255, 0.18));
     user-select: none;
+}
+
+@supports not (clip-path: inset(0 0 0 0)) {
+    .hero-symbol-slice {
+        display: none;
+    }
+
+    .hero-symbol-static {
+        display: block;
+    }
 }
 
 .hero-bottom-copy {

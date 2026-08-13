@@ -133,6 +133,7 @@ const initHeroSequence = () => {
     }
 
     const slices = [...root.querySelectorAll('[data-hero-slice]')];
+    const staticLogo = root.querySelector('.hero-symbol-static');
     const leftWord = root.querySelector('[data-hero-word="left"]');
     const rightWord = root.querySelector('[data-hero-word="right"]');
     const bottomCopy = root.querySelector('[data-hero-bottom]');
@@ -191,16 +192,23 @@ const initHeroSequence = () => {
 
         slices.forEach((slice) => {
             slice.style.transform = 'none';
+            slice.style.display = 'none';
         });
 
         if (leftWord) {
             leftWord.style.transform = 'none';
-            leftWord.style.opacity = '1';
+            leftWord.style.opacity = '0';
+            leftWord.style.display = 'none';
         }
 
         if (rightWord) {
             rightWord.style.transform = 'none';
-            rightWord.style.opacity = '1';
+            rightWord.style.opacity = '0';
+            rightWord.style.display = 'none';
+        }
+
+        if (staticLogo) {
+            staticLogo.style.display = 'block';
         }
 
         if (bottomCopy) {
@@ -214,6 +222,22 @@ const initHeroSequence = () => {
 
     const cycleMs = 4200;
     let startTime = null;
+
+    slices.forEach((slice) => {
+        slice.style.display = '';
+    });
+
+    if (leftWord) {
+        leftWord.style.display = '';
+    }
+
+    if (rightWord) {
+        rightWord.style.display = '';
+    }
+
+    if (staticLogo) {
+        staticLogo.style.display = 'none';
+    }
 
     const step = (timestamp) => {
         if (startTime === null) {
