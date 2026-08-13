@@ -53,11 +53,6 @@ Encore
     //     options.minify = MinimizerPlugin.lightningCssMinify;
     // })
 
-    // configure Babel
-    .configureBabel((config) => {
-        config.plugins.push(['polyfill-corejs3', { method: 'usage-global', version: '3.49' }]);
-    })
-
     // enables Sass/SCSS support
     // webpack.config.js / webpack.config.mjs
 .enableSassLoader((options) => {

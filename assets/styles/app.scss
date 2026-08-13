@@ -65,7 +65,14 @@ a {
 }
 
 .page-shell {
+    overflow-x: hidden;
     overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+    .page-shell {
+        overflow-x: hidden;
+    }
 }
 
 .section-label {
@@ -96,6 +103,7 @@ a {
     position: sticky;
     top: 0;
     z-index: 30;
+    -webkit-backdrop-filter: blur(18px);
     backdrop-filter: blur(18px);
     background: rgba(3, 7, 20, 0.68);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -217,6 +225,16 @@ a {
     will-change: transform;
 }
 
+@supports not (clip-path: inset(0 0 0 0)) {
+    .hero-symbol-slice {
+        display: none;
+    }
+
+    .hero-symbol-static {
+        display: block;
+    }
+}
+
 .hero-symbol-image {
     display: block;
     width: 100%;
@@ -225,6 +243,16 @@ a {
     object-position: center center;
     background: transparent;
     filter: drop-shadow(0 0 40px rgba(120, 103, 255, 0.2));
+    user-select: none;
+}
+
+.hero-symbol-static {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    filter: drop-shadow(0 0 34px rgba(120, 103, 255, 0.18));
     user-select: none;
 }
 
@@ -240,6 +268,13 @@ a {
     opacity: 0;
     transform: translate3d(0, 72px, 0);
     transition: opacity 0.18s linear, transform 0.18s linear;
+}
+
+.hero-sequence--static .hero-symbol-slice,
+.hero-sequence--static .hero-word,
+.hero-sequence--static .hero-bottom-copy {
+    transition: none !important;
+    animation: none !important;
 }
 
 .hero-bottom-block h2 {
@@ -721,6 +756,7 @@ a {
     gap: 0.95rem;
     padding: 1.3rem;
     background: rgba(250, 251, 255, 0.72);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 }
 
@@ -1041,6 +1077,7 @@ a {
     box-shadow:
         inset 0 0 0 1px rgba(255, 255, 255, 0.02),
         0 1.3rem 2.8rem rgba(2, 8, 24, 0.4);
+    -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     opacity: 0;
     animation:
@@ -1815,6 +1852,7 @@ a {
     }
 
     .hero-word {
+        display: none;
         font-size: clamp(3rem, 12vw, 4.6rem);
         opacity: 1 !important;
         margin-bottom: 1rem;
@@ -1826,8 +1864,16 @@ a {
     }
 
     .hero-symbol {
-        width: min(88vw, 30rem);
-        margin: 0 auto 2rem;
+        width: min(72vw, 22rem);
+        margin: 0 auto 1.5rem;
+    }
+
+    .hero-symbol-slice {
+        display: none;
+    }
+
+    .hero-symbol-static {
+        display: block;
     }
 
     .hero-bottom-copy {
@@ -1856,6 +1902,15 @@ a {
 
     .white-panel--reveal {
         transform: translate3d(0, 24px, 0) rotate(0deg);
+    }
+
+    .btn-platform-pulse,
+    .btn-platform-pulse::after,
+    .infrastructure-orbit::before,
+    .infrastructure-orbit::after,
+    .infrastructure-orbit-track,
+    .infrastructure-node {
+        animation: none !important;
     }
 
     .signal-grid__logo-panel {

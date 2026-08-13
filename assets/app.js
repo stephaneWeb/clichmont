@@ -1,7 +1,72 @@
 import './styles/app.scss';
-import 'bootstrap';
 
 const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+const addMediaQueryChangeListener = (mediaQuery, handler) => {
+    if (typeof mediaQuery.addEventListener === 'function') {
+        mediaQuery.addEventListener('change', handler);
+        return;
+    }
+
+    if (typeof mediaQuery.addListener === 'function') {
+        mediaQuery.addListener(handler);
+    }
+};
+
+const supportsIntersectionObserver = () => 'IntersectionObserver' in window;
+
+const initNavToggle = () => {
+    const toggle = document.querySelector('[data-nav-toggle]');
+    const collapse = document.querySelector('[data-nav-collapse]');
+
+    if (!toggle || !collapse) {
+        return;
+    }
+
+    const desktopMedia = window.matchMedia('(min-width: 992px)');
+
+    const setExpanded = (expanded) => {
+        toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        collapse.classList.toggle('show', expanded);
+    };
+
+    const closeNav = () => {
+        if (desktopMedia.matches) {
+            return;
+        }
+
+        setExpanded(false);
+    };
+
+    setExpanded(false);
+
+    toggle.addEventListener('click', () => {
+        if (desktopMedia.matches) {
+            return;
+        }
+
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        setExpanded(!expanded);
+    });
+
+    collapse.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', closeNav);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeNav();
+        }
+    });
+
+    addMediaQueryChangeListener(desktopMedia, (event) => {
+        setExpanded(!event.matches && toggle.getAttribute('aria-expanded') === 'true');
+
+        if (event.matches) {
+            collapse.classList.remove('show');
+        }
+    });
+};
 
 const createScrollLocker = () => {
     const body = document.body;
@@ -121,6 +186,32 @@ const initHeroSequence = () => {
         }
     };
 
+    if (window.matchMedia('(max-width: 991.98px)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('hero-sequence--static');
+
+        slices.forEach((slice) => {
+            slice.style.transform = 'none';
+        });
+
+        if (leftWord) {
+            leftWord.style.transform = 'none';
+            leftWord.style.opacity = '1';
+        }
+
+        if (rightWord) {
+            rightWord.style.transform = 'none';
+            rightWord.style.opacity = '1';
+        }
+
+        if (bottomCopy) {
+            bottomCopy.style.transform = 'none';
+            bottomCopy.style.opacity = '1';
+        }
+
+        root.style.setProperty('--hero-progress', '0');
+        return;
+    }
+
     const cycleMs = 4200;
     let startTime = null;
 
@@ -201,6 +292,11 @@ const initPlatformReveal = () => {
         return;
     }
 
+    if (!supportsIntersectionObserver()) {
+        revealCards();
+        return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (!entry.isIntersecting) {
@@ -247,6 +343,11 @@ const initLocationsPreviewReveal = () => {
         });
     };
 
+    if (!supportsIntersectionObserver()) {
+        revealPhotos();
+        return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (!entry.isIntersecting) {
@@ -279,6 +380,11 @@ const initInfrastructureReveal = () => {
     const activate = () => {
         section.classList.add('is-active');
     };
+
+    if (!supportsIntersectionObserver()) {
+        activate();
+        return;
+    }
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -335,6 +441,13 @@ const initSectionScrollGates = () => {
         }, duration);
     };
 
+    if (!supportsIntersectionObserver()) {
+        gates.forEach((gate) => {
+            activateGate(gate);
+        });
+        return;
+    }
+
     const observer = new IntersectionObserver((entries) => {
         if (locker.isLocked()) {
             return;
@@ -365,6 +478,7 @@ const initSectionScrollGates = () => {
     }
 };
 
+initNavToggle();
 initHeroSequence();
 initPlatformReveal();
 initInfrastructureReveal();
