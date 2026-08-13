@@ -180,15 +180,13 @@ const initPlatformReveal = () => {
         }
 
         if (intro) {
-            window.setTimeout(() => {
-                intro.classList.add('is-visible');
-            }, 340);
+            intro.classList.add('is-visible');
         }
 
         cards.forEach((card, index) => {
             window.setTimeout(() => {
                 card.classList.add('is-visible');
-            }, 860 + index * 320);
+            }, 120 + index * 90);
         });
 
     };
@@ -213,11 +211,16 @@ const initPlatformReveal = () => {
             observer.disconnect();
         });
     }, {
-        threshold: 0.35,
-        rootMargin: '0px 0px -8% 0px'
+        threshold: 0.18,
+        rootMargin: '0px 0px -4% 0px'
     });
 
     observer.observe(section);
+
+    if (section.getBoundingClientRect().top < window.innerHeight * 0.92) {
+        revealCards();
+        observer.disconnect();
+    }
 };
 
 const initLocationsPreviewReveal = () => {
