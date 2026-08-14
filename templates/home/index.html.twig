@@ -32,41 +32,54 @@
         </header>
 
         <main>
-            <section class="hero">
+            <section class="hero hero-sequence" data-hero-sequence>
                 <div class="hero-stage">
                     <div class="hero-shell">
                         <div class="hero-frame">
                             <div class="hero-frame-glow" aria-hidden="true"></div>
 
-                            <div class="container hero-layout">
-                                <div class="hero-copy-panel">
-                                    <span class="section-label">Private GPU Infrastructure</span>
-                                    <h1>Compute power, shaped for enterprise.</h1>
-                                    <p class="hero-lead">
+                            <div class="hero-word hero-word--left" data-hero-word="left">
+                                <span>Compute</span>
+                                <span>power</span>
+                            </div>
+
+                            <div class="hero-word hero-word--right" data-hero-word="right">
+                                <span>at</span>
+                                <span>scale</span>
+                            </div>
+
+                            <div class="hero-symbol" aria-label="Clichmont hero logo">
+                                <div class="hero-symbol-slice" data-hero-slice data-spread="-92" style="--slice-start: 0%; --slice-end: 20%;">
+                                    <img class="hero-symbol-image" src="{{ asset('images/clichmont-symbol-transparent-hero-v1.webp') }}" alt="" width="720" height="720" decoding="async">
+                                </div>
+                                <div class="hero-symbol-slice" data-hero-slice data-spread="-52" style="--slice-start: 16%; --slice-end: 39%;">
+                                    <img class="hero-symbol-image" src="{{ asset('images/clichmont-symbol-transparent-hero-v1.webp') }}" alt="" width="720" height="720" decoding="async">
+                                </div>
+                                <div class="hero-symbol-slice" data-hero-slice data-spread="0" style="--slice-start: 36%; --slice-end: 61%;">
+                                    <img class="hero-symbol-image" src="{{ asset('images/clichmont-symbol-transparent-hero-v1.webp') }}" alt="" width="720" height="720" decoding="async">
+                                </div>
+                                <div class="hero-symbol-slice" data-hero-slice data-spread="54" style="--slice-start: 58%; --slice-end: 81%;">
+                                    <img class="hero-symbol-image" src="{{ asset('images/clichmont-symbol-transparent-hero-v1.webp') }}" alt="" width="720" height="720" decoding="async">
+                                </div>
+                                <div class="hero-symbol-slice" data-hero-slice data-spread="96" style="--slice-start: 78%; --slice-end: 100%;">
+                                    <img class="hero-symbol-image" src="{{ asset('images/clichmont-symbol-transparent-hero-v1.webp') }}" alt="" width="720" height="720" decoding="async">
+                                </div>
+                                <img class="hero-symbol-static" src="{{ asset('images/clichmont-logo-transparent-hero-mobile-v1.webp') }}" alt="Clichmont" width="640" height="640" loading="eager" fetchpriority="high" decoding="async">
+                            </div>
+
+                            <div class="hero-bottom-copy" data-hero-bottom>
+                                <div class="hero-bottom-block">
+                                    <h2>Compute power, shaped for enterprise.</h2>
+                                    <p>
                                         Clichmont designs and operates GPU-ready environments for private cloud, AI workloads, rendering, and mission-critical compute operations.
                                     </p>
-                                    <p class="hero-support">
+                                </div>
+                                <div class="hero-bottom-block">
+                                    <p>
                                         High-density rooms, resilient power, secure deployment, and premium operational support are presented as one coherent infrastructure story.
                                     </p>
-                                    <p class="hero-support">We are also creating the Clichmont AI token ($CLAI), which will be at the heart of the Clichmont ecosystem. The $CLAI ICO is scheduled for September 2026!</p>
-                                    <div class="hero-actions">
-                                        <span class="btn btn-light rounded-pill px-4 btn-disabled-soon" aria-disabled="true">Join ICO Soon</span>
-                                    </div>
-                                </div>
-
-                                <div class="hero-visual" aria-label="Clichmont hero logo">
-                                    <img
-                                        class="hero-logo-image"
-                                        src="{{ asset('images/clichmont-logo-transparent-hero-desktop-v1.webp') }}"
-                                        srcset="{{ asset('images/clichmont-logo-transparent-hero-mobile-v1.webp') }} 640w, {{ asset('images/clichmont-logo-transparent-hero-desktop-v1.webp') }} 900w"
-                                        sizes="(max-width: 991.98px) 72vw, 36vw"
-                                        alt="Clichmont"
-                                        width="900"
-                                        height="900"
-                                        loading="eager"
-                                        fetchpriority="high"
-                                        decoding="async"
-                                    >
+                                    <p>We are also creating the Clichmont AI token ($CLAI), which will be at the heart of the Clichmont ecosystem. The $CLAI ICO is scheduled for September 2026!</p>
+                                    <span class="btn btn-light rounded-pill px-4 mt-3 btn-disabled-soon" aria-disabled="true">Join ICO Soon</span>
                                 </div>
                             </div>
                         </div>
@@ -241,7 +254,7 @@
                             <span class="section-label">Our Activity</span>
                             <h3 class="platform-activity__title">Compute Power Production and GPU Infrastructure Services</h3>
                             <p class="text-muted-contrast mb-4">
-                                Clichmont AI produces and commercializes high-performance computing power for artificial intelligence,
+                                Clichmont produces and commercializes high-performance computing power for artificial intelligence,
                                 machine learning, 3D rendering, scientific computing, and GPU-intensive applications.
                             </p>
                             <p class="text-muted-contrast mb-0">
@@ -496,7 +509,7 @@
                         <a class="brand-mark mb-3 d-inline-flex" href="{{ path('app_home') }}">
                             <img class="brand-logo brand-logo--footer" src="{{ asset('images/clichmont-logo-transparent-ui-v1.webp') }}" alt="Clichmont" width="512" height="512" loading="lazy" decoding="async">
                         </a>
-                        <p class="footer-blurb mb-0">Clichmont AI produces and delivers high-performance compute power and GPU infrastructure for AI training, inference, rendering, and the most demanding workloads.</p>
+                        <p class="footer-blurb mb-0">Clichmont produces and delivers high-performance compute power and GPU infrastructure for AI training, inference, rendering, and the most demanding workloads.</p>
                         <div class="footer-socials footer-socials--left">
                             <a class="footer-social" href="https://x.com/clichmont" target="_blank" rel="noreferrer" aria-label="X @clichmont">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
