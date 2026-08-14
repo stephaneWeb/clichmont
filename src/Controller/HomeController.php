@@ -90,7 +90,7 @@ final class HomeController extends AbstractController
                     'description' => 'Fast-turn deployment cluster dedicated to dense workstation-class AI, rendering, and production compute capacity.',
                     'metrics' => ['RTX 5090', 'RTX 4090'],
                     'gradient' => 'linear-gradient(135deg, rgba(58, 166, 255, 0.36), rgba(110, 255, 185, 0.22))',
-                    'image' => 'images/site-bodo-real-v2.webp',
+                    'image' => 'images/site-bodo-real-v3.webp',
                     'imageWidth' => 547,
                     'imageHeight' => 365,
                     'imagePosition' => 'center 52%',
