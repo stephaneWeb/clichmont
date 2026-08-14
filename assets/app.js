@@ -123,6 +123,92 @@ const createScrollLocker = () => {
     };
 };
 
+const initIcoSoonPanels = () => {
+    const groups = [...document.querySelectorAll('[data-ico-soon]')];
+
+    if (groups.length === 0) {
+        return;
+    }
+
+    const closeGroup = (group) => {
+        const button = group.querySelector('[data-ico-toggle]');
+        const panel = group.querySelector('[data-ico-panel]');
+
+        if (!button || !panel) {
+            return;
+        }
+
+        button.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
+    };
+
+    const openGroup = (group) => {
+        const button = group.querySelector('[data-ico-toggle]');
+        const panel = group.querySelector('[data-ico-panel]');
+
+        if (!button || !panel) {
+            return;
+        }
+
+        button.setAttribute('aria-expanded', 'true');
+        panel.hidden = false;
+    };
+
+    const closeOthers = (currentGroup) => {
+        groups.forEach((group) => {
+            if (group === currentGroup) {
+                return;
+            }
+
+            closeGroup(group);
+        });
+    };
+
+    groups.forEach((group) => {
+        const button = group.querySelector('[data-ico-toggle]');
+        const panel = group.querySelector('[data-ico-panel]');
+
+        if (!button || !panel) {
+            return;
+        }
+
+        button.addEventListener('click', () => {
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+            closeOthers(group);
+
+            if (isExpanded) {
+                closeGroup(group);
+                return;
+            }
+
+            openGroup(group);
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        const clickedInsidePanel = groups.some((group) => group.contains(event.target));
+
+        if (clickedInsidePanel) {
+            return;
+        }
+
+        groups.forEach((group) => {
+            closeGroup(group);
+        });
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') {
+            return;
+        }
+
+        groups.forEach((group) => {
+            closeGroup(group);
+        });
+    });
+};
+
 const initPlatformReveal = () => {
     const section = document.querySelector('[data-platform-reveal]');
     const cards = [...document.querySelectorAll('[data-reveal-card]')];
@@ -355,6 +441,7 @@ const initSectionScrollGates = () => {
 };
 
 initNavToggle();
+initIcoSoonPanels();
 initPlatformReveal();
 initInfrastructureReveal();
 initLocationsPreviewReveal();

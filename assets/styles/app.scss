@@ -315,6 +315,16 @@ a {
     margin-top: 1rem !important;
 }
 
+.hero-bottom-block .ico-soon .btn {
+    margin-top: 0 !important;
+}
+
+.hero-bottom-block .ico-soon,
+.infrastructure-copy .ico-soon,
+.signal-grid__logo-panel .ico-soon {
+    margin-top: 1rem;
+}
+
 .hero-layout {
     position: relative;
     z-index: 4;
@@ -397,6 +407,94 @@ a {
     background: linear-gradient(90deg, var(--cm-accent-2), #9b4fff);
     border: 0;
     box-shadow: 0 1rem 2.5rem rgba(93, 107, 255, 0.34);
+}
+
+.btn-ico-soon {
+    position: relative;
+    cursor: pointer;
+}
+
+.ico-soon {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.ico-soon--centered {
+    align-items: center;
+}
+
+.ico-soon__panel {
+    width: min(27rem, 82vw);
+    padding: 1rem 1.05rem 1.05rem;
+    border-radius: 1.05rem;
+    border: 1px solid rgba(123, 210, 255, 0.26);
+    background:
+        linear-gradient(180deg, rgba(8, 13, 30, 0.94), rgba(6, 10, 22, 0.97)),
+        radial-gradient(circle at top left, rgba(82, 205, 255, 0.12), transparent 48%);
+    color: #eef7ff;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 0 0 1px rgba(87, 189, 255, 0.08),
+        0 0.9rem 2rem rgba(3, 8, 21, 0.28),
+        0 0 22px rgba(74, 189, 255, 0.12);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+}
+
+.ico-soon__title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.55rem;
+    color: #d9f5ff;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.ico-soon__title::before {
+    content: "";
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: radial-gradient(circle, #cbf6ff 0%, #62d7ff 55%, #2d8fff 100%);
+    box-shadow:
+        0 0 10px rgba(111, 229, 255, 0.72),
+        0 0 18px rgba(45, 143, 255, 0.3);
+}
+
+.ico-soon__text {
+    margin: 0;
+    color: rgba(238, 247, 255, 0.86);
+    font-size: 0.94rem;
+    line-height: 1.62;
+}
+
+.nav-item--ico {
+    position: relative;
+}
+
+.ico-soon--nav .ico-soon__panel {
+    position: absolute;
+    top: calc(100% + 0.8rem);
+    right: 0;
+    width: min(24rem, 82vw);
+    z-index: 45;
+}
+
+@media (max-width: 991.98px) {
+    .ico-soon--nav {
+        align-items: flex-start;
+    }
+
+    .ico-soon--nav .ico-soon__panel {
+        position: static;
+        width: min(27rem, 82vw);
+    }
 }
 
 .btn-disabled-soon {
