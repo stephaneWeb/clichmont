@@ -1830,7 +1830,9 @@ a {
     color: #f3f6ff;
     font-size: 0.82rem;
     line-height: 1.45;
-    word-break: break-word;
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: nowrap;
 }
 
 .footer-contact-link:hover {
