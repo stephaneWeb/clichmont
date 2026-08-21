@@ -1752,7 +1752,7 @@ a {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.45fr) repeat(6, minmax(0, 0.88fr));
+    grid-template-columns: minmax(0, 1.45fr) repeat(7, minmax(0, 0.88fr));
     gap: 0;
     align-items: start;
 }
@@ -1913,6 +1913,74 @@ a {
     color: #fff;
 }
 
+.legal-page {
+    min-height: 100vh;
+}
+
+.legal-hero {
+    position: relative;
+    padding: 5rem 0 2.5rem;
+}
+
+.legal-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 14% 16%, rgba(47, 111, 255, 0.18), transparent 26%),
+        radial-gradient(circle at 84% 14%, rgba(143, 98, 255, 0.18), transparent 24%);
+    pointer-events: none;
+}
+
+.legal-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 48rem;
+}
+
+.legal-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 1.75rem;
+}
+
+.legal-content-section {
+    padding-top: 0;
+}
+
+.legal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.legal-card {
+    height: 100%;
+    padding: 1.75rem;
+}
+
+.legal-card h2 {
+    margin: 1rem 0 0.85rem;
+    font-size: 1.2rem;
+}
+
+.legal-card p {
+    margin-bottom: 0.9rem;
+}
+
+.legal-card p:last-child {
+    margin-bottom: 0;
+}
+
+.legal-card a {
+    color: #3d6fff;
+}
+
+.legal-card a:hover {
+    color: #1d4ed8;
+}
+
 @media (max-width: 1199.98px) {
     .platform-showcase {
         grid-template-columns: 1fr;
@@ -1984,6 +2052,7 @@ a {
 
     .site-grid,
     .signal-grid,
+    .legal-grid,
     .site-preview-grid,
     .site-timeline__grid,
     .kpi-strip,
@@ -2154,6 +2223,7 @@ a {
 
     .site-grid,
     .signal-grid,
+    .legal-grid,
     .site-preview-grid,
     .site-timeline__grid,
     .footer-grid {

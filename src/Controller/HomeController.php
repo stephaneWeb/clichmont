@@ -154,4 +154,10 @@ final class HomeController extends AbstractController
             ],
         ]);
     }
+
+    #[Route('/legal-notice', name: 'app_legal_notice', methods: ['GET'])]
+    public function legalNotice(): Response
+    {
+        return $this->render('legal/index.html.twig');
+    }
 }

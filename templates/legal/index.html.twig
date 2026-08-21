@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Legal Notice | Clichmont{% endblock %}
+{% block meta_description %}Legal notice, hosting information, intellectual property, liability, applicable law, and website development details for Clichmont.{% endblock %}
+
+{% block body %}
+    <div class="page-shell legal-page">
+        <header class="site-header">
+            <nav class="navbar navbar-expand-lg py-3">
+                <div class="container">
+                    <a class="brand-mark navbar-brand m-0" href="{{ path('app_home') }}">
+                        <span class="brand-orb" aria-hidden="true"></span>
+                        <span class="brand-text">Clichmont</span>
+                    </a>
+
+                    <div class="ms-auto d-flex align-items-center gap-3">
+                        <a class="nav-link" href="{{ path('app_home') }}">Home</a>
+                        <a class="btn btn-primary" href="{{ path('app_home') }}#footer">Contact</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="legal-hero">
+                <div class="container">
+                    <div class="legal-hero__inner">
+                        <span class="section-label">Legal Information</span>
+                        <h1 class="display-4 fw-semibold mt-4 mb-3">Legal Notice</h1>
+                        <p class="lead mb-0">
+                            This page provides the main legal information related to the Clichmont website, including hosting, intellectual property, liability, applicable law, and website development.
+                        </p>
+                        <div class="legal-hero__actions">
+                            <a class="btn btn-primary" href="{{ path('app_home') }}">Back to Home</a>
+                            <a class="btn btn-outline-light" href="{{ path('app_home') }}#footer">Contact Clichmont</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="white-section legal-content-section">
+                <div class="container">
+                    <div class="legal-grid">
+                        <article class="white-panel legal-card">
+                            <span class="section-label">Hosting</span>
+                            <h2>Hosting Provider</h2>
+                            <p>OVH SAS</p>
+                            <p>2 rue Kellermann</p>
+                            <p>59100 Roubaix - France</p>
+                        </article>
+
+                        <article class="white-panel legal-card">
+                            <span class="section-label">Ownership</span>
+                            <h2>Intellectual Property</h2>
+                            <p>All content published on this website, including texts, images, illustrations, graphics, and other materials, is protected by copyright law.</p>
+                            <p>Any reproduction, distribution, modification, or use without prior authorization is prohibited.</p>
+                        </article>
+
+                        <article class="white-panel legal-card">
+                            <span class="section-label">Liability</span>
+                            <h2>Responsibility</h2>
+                            <p>The information provided on this website is for general information purposes only.</p>
+                            <p>It may be updated, modified, or corrected at any time without prior notice.</p>
+                        </article>
+
+                        <article class="white-panel legal-card">
+                            <span class="section-label">Jurisdiction</span>
+                            <h2>Applicable Law</h2>
+                            <p>This website is governed by French law.</p>
+                        </article>
+
+                        <article class="white-panel legal-card">
+                            <span class="section-label">Development</span>
+                            <h2>Website Development</h2>
+                            <p>This website was developed by <a href="https://atelierhalo.fr" target="_blank" rel="noreferrer">Atelier Halo</a>.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+{% endblock %}
